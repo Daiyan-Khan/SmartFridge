@@ -8,7 +8,7 @@ camera = Picamera2()
 
 # Set camera resolution (adjust as needed)
 camera.resolution = (300, 300)
-
+url1 = 'https://maker.ifttt.com/trigger/pic_taken/with/key/dqisEg_LCCBlGCCu3DDNbPSY7F0lYojB3y-UTwBn0fX'
 # Start capturing video
 camera_config = camera.create_preview_configuration()
 camera.configure(camera_config)
@@ -32,6 +32,7 @@ while True:
             for code in codes:
                 item = code.decode('utf8')
                 print("QR Code data:", item)
-                requests.post('https://maker.ifttt.com/trigger/pic_taken/{"value1" : "item"}/with/key/dqisEg_LCCBlGCCu3DDNbPSY7F0lYojB3y-UTwBn0fX')
+                json_data = { "value1": item}
+                requests.post(url,json = json_data)
 # Stop capturing and close the camera
 camera.stop_preview()
