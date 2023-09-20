@@ -17,8 +17,6 @@ camera.start()
 while True:
     # Capture a frame
     sleep(1)  # Adjust the sleep duration as needed to control frame rate
-   
-   
     camera.capture_file("frame.jpg")
     sleep(2)
 
